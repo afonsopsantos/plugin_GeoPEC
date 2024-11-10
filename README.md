@@ -1,4 +1,9 @@
 # plugin_GeoPEC
+Novembro de 2024 - Versão inicial do Plugin GeoPEC para o QGIS.
 
-Plugin em fase de finalização.
-Para testar, baixe o arquivo GeoPEC.zip e instale o plugin no QGIS.
+GeoPEC é um software cientifico para avaliação da acurácia posicional de dados espaciais
+O plugin GeoPEC foi desenvolvido por Afonso de Paula dos Santos (afonso.santos@ufv.br), João Vitor Alves Gonçalves (joao.goncalves53@ufv.br) e Luis Philippe Ventura Rodrigues (luis.ventura@ufv.br)
+
+O software científico GeoPEC tem como objetivo fornecer ferramentas e uma metodologia robusta para avaliação da acurácia posicional de dados espaciais. Possui diversos padrões brasileiros de qualidade cartográfica: (i) Decreto nº. 89.817 de 1984, aliada às Especificações Técnicas de Controle de Qualidade em Dados Geoespaciais de 2016 (ET-CQDG) - da INDE, que proporciona a analise da qualidade dos produtos da cartografia nacional; (ii) Normatização do INCRA para avaliação de produtos aerofotogramétricos utilizados no Georreferenciamento de Imóveis Rurais, exposta no Manual Técnico - 2ª edição de 2022; (iii) Avaliação de produtos decorrentes de aerolevantamento utilizados no âmbito da Agência Nacional de Mineração (ANM), a partir da Resolução n.123 de 2022. Possui diversas metodologias para avaliação da qualidade, como detecção de outliers, teste de normalidade e testes de tendências. No processo de amostragem, o GeoPEC disponibiliza ferramentas para  definição do tamanho amostral, como ISO 2859 e NBR 13.133, e para determinação do padrão de distribuição espacial de conjuntos de pontos, pelo método do vizinho mais próximo.
+
+tags=acurácia posicional,controle de qualidade cartográfica,qualidade de dados espaciais,padrão de distribuição espacial,padrão de exatidão cartográfica,Decreto 89817,INCRA,ANM,ASPRS,qualidade, drone,tamanho amostral,ISO 2859,discrepância,erro,positional accuracy,spatial data quality,discrepancie,error,assessment accuracy,quality,control,cartography,sample,sampling design
