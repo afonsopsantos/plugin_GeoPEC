@@ -6,7 +6,7 @@
 name=GeoPEC
 qgisMinimumVersion=3.0
 description=GeoPEC é um software cientifico para avaliação da acurácia posicional de dados espaciais
-version=1.0.0
+version=1.0.1
 author= Afonso de Paula dos Santos, João Vitor Alves Gonçalves, Luis Philippe Ventura Rodrigues
 email=afonso.santos@ufv.br, joao.goncalves53@ufv.br, luis.ventura@ufv.br
 
