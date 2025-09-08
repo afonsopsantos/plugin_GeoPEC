@@ -146,7 +146,6 @@ class posicional:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('tamanhoamostral', message)
 
-
     def add_action(
         self,
         icon_path,
@@ -230,8 +229,7 @@ class posicional:
         del self.menu
         # remove the toolbar
         del self.toolbar
-    
-    
+        
     def carregaVetor(self):
         """Preenche os combobox com as layers vetoriais do tipo ponto"""
         #limpando os comboBox
@@ -277,7 +275,6 @@ class posicional:
             # Informar ao usuário que a camada não possui geometria de ponto
                 QMessageBox.warning(self.dlg, "Erro", "A camada selecionada não possui geometria de ponto.")
                 pass
-
 
     def carregaCamada(self):
         """execução do botão para abrir uma layer. Será aberto uma janela de diálogo e a layer escolhida será adicionada ao projeto e ao combobox"""
@@ -335,8 +332,7 @@ class posicional:
 
             # Exibindo a mensagem
             msg_box.exec_()
-        
-    
+         
     def obt_data(self):
         """Método que extrai os dados das camadas de teste e de referência, faz a junção espacial e gera uma estrutura para salvar os dados necessários"""
         
@@ -545,8 +541,7 @@ class posicional:
             self.dlg.label_85.setVisible(False)
             self.dlg.label_67.setVisible(False)
             self.dlg.label_112.setVisible(False)
-            
-            
+                     
     def tendencia(self, dx, dy, dz):
         """Este método processa as atualizações da aba de tendência, como cálculos e atualizações da interface gráfica """
         """ Tem como parâmetros, os dicionários de discrepâncias dx, dy e dx"""
@@ -719,7 +714,7 @@ class posicional:
                     if (result_x == 'Não há tendência') and (result_y == 'Não há tendência') :
                         
                         self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                     else:
                         
@@ -737,7 +732,7 @@ class posicional:
                 if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
                         
                     self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                 else:
                         
@@ -753,11 +748,11 @@ class posicional:
             
                 if (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Não Tendencioso'):
                 
-                    self.var_tendencia_2D_relatorio = 'não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 elif (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Inconclusivo'):
                     
-                    self.var_tendencia_2D_relatorio = 'não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 else:
                 
@@ -769,7 +764,7 @@ class posicional:
                 
                 if (self.dlg.label_120.text() == 'Não Tendencioso'):
             
-                    self.var_tendencia_2D_relatorio = 'não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
             
                 elif (self.dlg.label_120.text() == 'Inconclusivo'):
                 
@@ -860,7 +855,7 @@ class posicional:
                     if (result_z == 'Não há tendência'):
                         
                         self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                     else:
                         
@@ -880,7 +875,7 @@ class posicional:
                 if (result_z == 'Não há tendência'):
                         
                     self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                 else:
                         
@@ -893,7 +888,7 @@ class posicional:
             
             if (self.dlg.label_120.text() == 'Não Tendencioso'):
             
-                self.var_tendencia_Z_relatorio = 'não tendencioso'
+                self.var_tendencia_Z_relatorio = 'Não Tendencioso'
             
             elif (self.dlg.label_120.text() == 'Inconclusivo'):
                 
@@ -1039,7 +1034,7 @@ class posicional:
                     if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
                         
                         self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                     else:
                         
@@ -1058,7 +1053,7 @@ class posicional:
                 if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
                         
                     self.dlg.label_120.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                 else:
                         
@@ -1084,7 +1079,7 @@ class posicional:
                     if (result_z == 'Não há tendência'):
                         
                         self.dlg.label_129.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                     else:
                         
@@ -1103,7 +1098,7 @@ class posicional:
                 if (result_z == 'Não há tendência'):
                         
                     self.dlg.label_129.setText('Não Tendencioso')
-                        #Não tendencioso
+                        #Não Tendencioso
                     
                 else:
                         
@@ -1119,11 +1114,11 @@ class posicional:
             
                 if (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Não Tendencioso'):
                 
-                    self.var_tendencia_2D_relatorio = 'Não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 elif (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Inconclusivo'):
                     
-                    self.var_tendencia_2D_relatorio = 'não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 else:
                 
@@ -1133,7 +1128,7 @@ class posicional:
                 
                 if (self.dlg.label_120.text() == 'Não Tendencioso'):
             
-                    self.var_tendencia_2D_relatorio = 'não tendencioso'
+                    self.var_tendencia_2D_relatorio = 'Não Tendencioso'
             
                 elif (self.dlg.label_120.text() == 'Inconclusivo'):
                 
@@ -1147,7 +1142,7 @@ class posicional:
             
             if (self.dlg.label_129.text() == 'Não Tendencioso'):
             
-                self.var_tendencia_Z_relatorio = 'não tendencioso'
+                self.var_tendencia_Z_relatorio = 'Não Tendencioso'
             
             elif (self.dlg.label_129.text() == 'Inconclusivo'):
                 
@@ -1163,9 +1158,7 @@ class posicional:
                                        [t_tabelado_y, t_calc_y, result_y],
                                        [t_tabelado_z, t_calc_z, result_z]
                                      ]
-            
-            
-    
+                         
     def showNormalidade(self, op):
         """Este método habilita ou desabilita os labels da aba de normalidade, conforme a opção de processamento """
         
@@ -1445,8 +1438,7 @@ class posicional:
             else:
             
                 self.normalidade_z = False
-            
-    
+                
     def atualizaOutlier(self, metodo, dados_2D, dados_Z):
         """Este método atualiza a interface gráfica da aba de outliers"""
         
@@ -1619,8 +1611,7 @@ class posicional:
             #Mudando o resultado de Z
             self.dlg.label_157.setText(dados_Z[0])
             self.dlg.label_130.setText(dados_Z[1])
-        
-                
+                      
     def outlier(self, dados, op): #op é para planimetria ou altimetria
         """Este método realiza a análise de outliers com base nos dados de discrepâncias e na opção se planimetria ou altimetria"""
         
@@ -2363,8 +2354,7 @@ class posicional:
                 self.ep_Z_relatorio = resultZ['D']['EP']
                 self.pec_Z_relatorio = resultZ['D']['PEC']
                 self.percent_di_Z_relatorio = resultZ['D']['Percent']
-                
-                
+                              
     def atulizaANM(self,op,resultados, esc_pla, esc_alt):
         """Este método atualiza a interface gráfica da aba da ANM, e tem como parâmetros a opção se 2D, Z ou 3D,os resultados e a escala de processamento"""
         
@@ -5010,7 +5000,6 @@ class posicional:
                     self.show_messagebox_erro('erro', 'O conjunto de dados é menor do que 3 pontos!')
                     self.clearTables() #Limpando as tabelas da aba inicial
 
-
 #########################################
 ######## PARTE DO RELATORIO ################
     
@@ -5277,14 +5266,14 @@ class posicional:
         """Este método realiza a análise de acurácia conforme a metodologa Santos et al"""
         
         #Realizando o teste de acurácia 2D  
-        if (self.var_tendencia_2D_relatorio == 'não tendencioso') and (self.var_precisao_2D_relatorio == 'É preciso'):
+        if (self.var_tendencia_2D_relatorio == 'Não Tendencioso') and (self.var_precisao_2D_relatorio == 'É preciso'):
             
             var_acuracia_2D = 'É ACURADO'
         else:
             var_acuracia_2D = 'NÃO É ACURADO'
           
         #Realizando o teste de acurácia Z       
-        if (self.var_tendencia_Z_relatorio == 'não tendencioso') and (self.var_precisao_Z_relatorio == 'É preciso'):
+        if (self.var_tendencia_Z_relatorio == 'Não Tendencioso') and (self.var_precisao_Z_relatorio == 'É preciso'):
             
             var_acuracia_Z = 'É ACURADO'
         else:
@@ -5598,8 +5587,6 @@ class posicional:
         
              pass
     
-
-
     ######################################################
     #Parte de resumo e relatório
     
@@ -6696,8 +6683,7 @@ class posicional:
      
     ###################################################
     #Parte dos gráficos
-    
-    
+      
     def FG_exibir_janela_dispersao_2D(self, op):
         """Este método cria o gráfico de dispersão 2D para ser aberto em uma janela do programa ou para ser inserido no relatório"""
         
@@ -6997,9 +6983,7 @@ class posicional:
             
             #Retornando a imagem para ser inserida no relatório
             return image_stream
-            
-            
-    
+             
     ## graf de dispersao z, para GRAPHICVIEW
     def FG_exibir_gv_dispersao_Z(self):
         
