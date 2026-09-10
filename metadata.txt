@@ -1,12 +1,9 @@
-# This file contains metadata for your plugin.
-
-# This file should be included when you package your plugin.# Mandatory items:
-
 [general]
 name=GeoPEC
-qgisMinimumVersion=3.0
+qgisMinimumVersion = 3.22
+qgisMaximumVersion=4.99
 description=GeoPEC é um software cientifico para avaliação da acurácia posicional de dados espaciais
-version=1.0.1
+version=1.0.2
 author= Afonso de Paula dos Santos, João Vitor Alves Gonçalves, Luis Philippe Ventura Rodrigues
 email=afonso.santos@ufv.br, joao.goncalves53@ufv.br, luis.ventura@ufv.br
 
@@ -14,34 +11,24 @@ about=O software científico GeoPEC tem como objetivo fornecer ferramentas e uma
 
 tracker=https://github.com/afonsopsantos/plugin_GeoPEC/issues
 repository=https://github.com/afonsopsantos/plugin_GeoPEC
-# End of mandatory metadata
-
-# Recommended items:
 
 hasProcessingProvider=no
-# Uncomment the following line and add your changelog:
-# changelog=
 
-# Tags are comma separated with spaces allowed
+
+changelog=
+    1.0 - versão inicial
+    1.0.1 - correção de bugs no resultado da acurácia posicional Decreto 89817, metodologia Santos et al. (2016)
+    1.0.2 - compatibilização com QGIS4 e qt6, correção bug no tamanho amostral ISO 2859-2
+
+
 tags=acurácia posicional,controle de qualidade cartográfica,qualidade de dados espaciais,padrão de distribuição espacial,padrão de exatidão cartográfica,Decreto 89817,INCRA,ANM,ASPRS,qualidade, drone,tamanho amostral,ISO 2859,discrepância,erro,positional accuracy,spatial data quality,discrepancie,error,assessment accuracy,quality,control,cartography,sample,sampling design
 
 homepage=http://www.geopec.com.br
 category=Plugins
 icon=icon.png
-# experimental flag
+
+
 experimental=False
-
-# deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
-
-# Since QGIS 3.8, a comma separated list of plugins to be installed
-# (or upgraded) can be specified.
-# Check the documentation for more information.
-# plugin_dependencies=
-
-Category of the plugin: Raster, Vector, Database or Web
-# category=
-
-# If the plugin can run on QGIS Server.
 server=False
 

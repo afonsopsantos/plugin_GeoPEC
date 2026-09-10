@@ -1,5 +1,5 @@
 # plugin_GeoPEC
-Novembro de 2024 - Versão inicial do Plugin GeoPEC para o QGIS.
+Setembro de 2026 - Plugin GeoPEC para o QGIS.
 
 GeoPEC é um software cientifico para avaliação da acurácia posicional de dados espaciais
 O plugin GeoPEC foi desenvolvido por Afonso de Paula dos Santos (afonso.santos@ufv.br), João Vitor Alves Gonçalves (joao.goncalves53@ufv.br) e Luis Philippe Ventura Rodrigues (luis.ventura@ufv.br)
