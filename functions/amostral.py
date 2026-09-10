@@ -386,14 +386,14 @@ def fIso2859_2(amost, index):
         if amost>=150001:
             i = 6
             ql = tabQL[i][lqa]
-            ql = str(ql)
+            ql = str(ql).replace('.', ',')
        
         else:
             for var in tab01:
                 if amost>= var[1] and amost<=var[2]:  
                     i = var[0]
                     ql = tabQL[i][lqa]
-                    ql = str(ql)
+                    ql = str(ql).replace('.', ',')
     
         # Definição das tabelas ISO de lote isolado
         table = [(0,16,25),
