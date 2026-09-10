@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>324</height>
+    <width>400</width>
+    <height>350</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>350</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>GeoPEC - Gerar arquivo de entrada</string>
@@ -20,92 +32,127 @@
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>20</y>
-     <width>231</width>
-     <height>22</height>
+     <x>10</x>
+     <y>60</y>
+     <width>350</width>
+     <height>24</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>345</width>
+     <height>0</height>
+    </size>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox_2">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>60</y>
-     <width>211</width>
-     <height>22</height>
+     <x>10</x>
+     <y>115</y>
+     <width>350</width>
+     <height>24</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>345</width>
+     <height>0</height>
+    </size>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>130</y>
-     <width>311</width>
-     <height>20</height>
+     <x>10</x>
+     <y>180</y>
+     <width>350</width>
+     <height>24</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>345</width>
+     <height>0</height>
+    </size>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>91</width>
+     <x>10</x>
+     <y>45</y>
+     <width>77</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Layer de teste:</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>101</width>
+     <x>10</x>
+     <y>100</y>
+     <width>103</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Layer de referência:</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>110</y>
-     <width>231</width>
+     <x>10</x>
+     <y>165</y>
+     <width>203</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Arquivo a ser gerado para o GeoPEC desktop:</string>
+    <string>Local e nome do arquivo a ser gerado:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>230</y>
-     <width>71</width>
+     <x>10</x>
+     <y>280</y>
+     <width>63</width>
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Informações:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>20</y>
-     <width>21</width>
-     <height>23</height>
+     <x>360</x>
+     <y>60</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
@@ -115,10 +162,10 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>60</y>
-     <width>21</width>
-     <height>23</height>
+     <x>360</x>
+     <y>115</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
@@ -128,66 +175,103 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>130</y>
-     <width>21</width>
-     <height>23</height>
+     <x>360</x>
+     <y>180</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
     <string>...</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>270</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ID -  XYZ teste -  XYZ referência</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>290</y>
-     <width>291</width>
-     <height>20</height>
+     <x>10</x>
+     <y>322</y>
+     <width>371</width>
+     <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>- O caractere separador de campos é o TAB.</string>
+    <string> - O caractere separador de campos é o TAB.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>250</y>
-     <width>271</width>
+     <x>10</x>
+     <y>301</y>
+     <width>371</width>
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>- O arquivo de entrada será gerado com a sequência</string>
+    <string>- O arquivo será gerado com a sequência: ID -  XYZ teste -  XYZ referência</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>170</y>
-     <width>151</width>
-     <height>41</height>
+     <x>10</x>
+     <y>220</y>
+     <width>374</width>
+     <height>48</height>
     </rect>
    </property>
    <property name="text">
     <string>Gerar arquivo</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>24</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../icon/auxiliar-2.svg</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>327</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>GERAR ARQUIVO DE ENTRADA PARA O GEOPEC DESKTOP</string>
    </property>
   </widget>
  </widget>

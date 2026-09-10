@@ -64,7 +64,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -84,7 +83,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -95,21 +93,23 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>150</y>
-     <width>91</width>
-     <height>16</height>
+     <x>280</x>
+     <y>160</y>
+     <width>121</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
    <property name="text">
-    <string>versão 1.0 - 2024</string>
+    <string>versão 1.0.2 - 2026</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -124,7 +124,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -144,7 +143,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -164,7 +162,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -184,7 +181,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -204,7 +200,6 @@
    <property name="font">
     <font>
      <pointsize>8</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -212,7 +207,7 @@
     <string/>
    </property>
    <property name="textFormat">
-    <enum>Qt::RichText</enum>
+    <enum>Qt::TextFormat::RichText</enum>
    </property>
    <property name="pixmap">
     <pixmap>../icon/sobre-fundo.png</pixmap>
@@ -231,7 +226,6 @@
     <font>
      <family>Calibri</family>
      <pointsize>16</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
