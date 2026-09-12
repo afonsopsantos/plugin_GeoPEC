@@ -513,12 +513,12 @@ def show_messagebox_erro(tipo, mensagem):
         msg_box.setWindowIcon(QIcon(plugin_dir_pai + "/icon/geopec.png"))  
 
         # Configure a mensagem de erro
-        msg_box.setIcon(QMessageBox.Critical)
+        msg_box.setIcon(QMessageBox.Icon.Critical)
         msg_box.setWindowTitle('Erro')
         msg_box.setText(mensagem)
 
         # Exiba a mensagem
-        msg_box.exec_()
+        msg_box.exec()
     
         
     else: # tipo igual sucesso
@@ -530,10 +530,10 @@ def show_messagebox_erro(tipo, mensagem):
         msg_box.setWindowIcon(QIcon(plugin_dir_pai + "/icon/geopec.png"))  
 
         # Configure a mensagem de erro
-        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setIcon(QMessageBox.Icon.Information)
         msg_box.setWindowTitle('Sucesso')
         msg_box.setText(mensagem)
 
         # Exiba a mensagem
-        msg_box.exec_()
+        msg_box.exec()
    
