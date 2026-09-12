@@ -599,7 +599,7 @@ class padraodistribuicao:
 
             # Configure a mensagem de sucesso
             # Configure the sucess message
-            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setIcon(QMessageBox.Icon.Information)
             msg_box.setWindowTitle('Sucesso')
             msg_box.setText(mensagem)
 

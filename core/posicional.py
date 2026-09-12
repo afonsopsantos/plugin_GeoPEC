@@ -344,7 +344,7 @@ class posicional:
 
             # Configure a mensagem de sucesso
             # Configure the sucess message
-            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setIcon(QMessageBox.Icon.Information)
             msg_box.setWindowTitle('Sucesso')
             msg_box.setText(mensagem)
 
@@ -1791,7 +1791,7 @@ class posicional:
             
             # Adicionando o ícone de informação
             # Adding the information icon
-            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setIcon(QMessageBox.Icon.Information)
             
             # Adicionando as opções de sim e de não ao messagebox
             # Adding yes and no options to the messagebox
@@ -1800,12 +1800,12 @@ class posicional:
             
             # Adicionando os botões de sim e de não ao messagebox
             # Adding yes and no buttons to the messagebox
-            msgBox.addButton(simButton, QMessageBox.YesRole)
-            msgBox.addButton(naoButton, QMessageBox.NoRole)
+            msgBox.addButton(simButton, QMessageBox.ButtonRole.YesRole)
+            msgBox.addButton(naoButton, QMessageBox.ButtonRole.NoRole)
             
             # Obtendo a escolha do usuário
             # Getting user choice
-            returnValue = msgBox.exec_()
+            returnValue = msgBox.exec()
            
             # Entra no if caso o usuário escolha "sim", ou seja, processar excluindo os pontos
             # Enter if if the user chooses "yes", that is, process excluding the points
@@ -4586,7 +4586,7 @@ class posicional:
         
         #Setando a cor da barra de progresso como verde
         palette = QPalette()
-        #palette.setColor(QPalette.Highlight, Qt.green)
+        #palette.setColor(QPalette.ColorRole.Highlight, Qt.GlobalColor.green)
         #QGIS4 QT6
         palette.setColor(QPalette.ColorRole.Highlight, Qt.GlobalColor.green)
         self.dlg.progressBar.setPalette(palette)

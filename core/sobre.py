@@ -201,13 +201,13 @@ class sobre:
 
             # Configure a mensagem de erro
             # set the erro message
-            msg_box.setIcon(QMessageBox.Critical)
+            msg_box.setIcon(QMessageBox.Icon.Critical)
             msg_box.setWindowTitle('Erro')
             msg_box.setText(mensagem)
 
             # Exibindo a mensagem
             # show message
-            msg_box.exec_()
+            msg_box.exec()
         
         # tipo de menssagem: sucesso    
         # sucess message
@@ -221,13 +221,13 @@ class sobre:
 
             # Configurando a mensagem de sucesso
             # set the sucess message
-            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setIcon(QMessageBox.Icon.Information)
             msg_box.setWindowTitle('Sucesso')
             msg_box.setText(mensagem)
 
             # Exibindo a mensagem
             # show message
-            msg_box.exec_()
+            msg_box.exec()
     
     def run(self):
         """Execute o método que realiza todo o trabalho"""
