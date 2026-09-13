@@ -26,11 +26,11 @@
 """
 
 # pyqt libraries
-from PyQt6.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QVariant, Qt, QDate , QTimer
-from PyQt6.QtGui import QAction, QIcon, QFont, QFontMetrics, QColor, QBrush, QPixmap, QPalette, QWindowStateChangeEvent, QImage
-from PyQt6.QtWidgets import QFileDialog, QMessageBox, QApplication, QMainWindow, QTableWidgetItem, QComboBox, QAbstractItemView, QRadioButton, QVBoxLayout, QWidget
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QVariant, Qt, QDate , QTimer
+from qgis.PyQt.QtGui import QAction, QIcon, QFont, QFontMetrics, QColor, QBrush, QPixmap, QPalette, QWindowStateChangeEvent, QImage
+from qgis.PyQt.QtWidgets import QFileDialog, QMessageBox, QApplication, QMainWindow, QTableWidgetItem, QComboBox, QAbstractItemView, QRadioButton, QVBoxLayout, QWidget
 from qgis.core import *
-from PyQt6 import QtGui
+from qgis.PyQt import QtGui
 from qgis.gui import QgsMapCanvas, QgsLayerTreeMapCanvasBridge 
 from qgis.PyQt.QtWidgets import QAction, QMainWindow, QVBoxLayout, QLabel,  QGraphicsView, QSizePolicy
 from osgeo import gdal
@@ -1648,62 +1648,52 @@ class posicional:
         ''' Função para exibir o messageBox de escolha de processamento caso o usuário escolha excluir algum ponto'''
         ''' Function to display the processing choice messageBox if the user chooses to exclude a point'''
 
-        # ponto de checagem estiver marcado para ser excluido
-        # checkpoint is marked to be deleted
-        if pontos!=0:
-            
-            # messagebox
-            msgBox = QMessageBox()
-            msgBox.setWindowTitle("Escolha uma opção")
-            if pontos ==1:
-                mensagem = f"Você selecionou 1 ponto para ser exluido do cálculo. Deseja mesmo excluir?"
-            else:
-                mensagem = f"Você selecionou {pontos} pontos para serem exluidos do cálculo. Deseja mesmo excluir?"
-            
-            # Adicionando a mensagem ao messagebox
-            # Adding the message to the messagebox
-            msgBox.setText(mensagem)
-            
-            # Adicionando um ícone personalizado do GeoPEC
-            # Adding a custom GeoPEC icon
-            icon = QIcon(self.plugin_dir + "/icon/geopec.png")  
-            msgBox.setWindowIcon(icon)
-            
-            # Adicionando o ícone de informação
-            # Adding the information icon
-            msgBox.setIcon(QMessageBox.Icon.Information)
-            
-            # Adicionando as opções de sim e de não ao messagebox
-            # Adding yes and no options to the messagebox
-            simButton = QRadioButton("Sim, exclua os pontos do processamento")
-            naoButton = QRadioButton("Não, mantenha os pontos no processamento ")
-            
-            # Adicionando os botões de sim e de não ao messagebox
-            # Adding yes and no buttons to the messagebox
-            msgBox.addButton(simButton, QMessageBox.ButtonRole.YesRole)
-            msgBox.addButton(naoButton, QMessageBox.ButtonRole.NoRole)
-            
-            # Obtendo a escolha do usuário
-            # Getting user choice
-            returnValue = msgBox.exec()
-
-            # Entra no if caso o usuário escolha "sim", ou seja, processar excluindo os pontos
-            # Enter if if the user chooses "yes", that is, process excluding the points
-            if returnValue == 2:
-                return True
-            
-            # Entra no else se o usuário escolha "Não", ou seja, desista de excluir os pontos
-            # Enter else if the user chooses "No", that is, gives up deleting the points
-            else:
-                return False
-        
-        # Entra no else caso o usuário não queira excluir nenhum ponto
-        # Enter else if the user does not want to delete any points
-        else:
+        # Se não tiver pontos para excluir, retorna falso
+        # Returns false if there are no points to delete
+        if pontos == 0:
             return False
+            
+        # messagebox
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle("Escolha uma opção")
+        if pontos ==1:
+            mensagem = f"Você selecionou 1 ponto para ser exluido do cálculo. Deseja mesmo excluir?"
+        else:
+            mensagem = f"Você selecionou {pontos} pontos para serem exluidos do cálculo. Deseja mesmo excluir?"
+            
+        # Adicionando a mensagem ao messagebox
+        # Adding the message to the messagebox
+        msgBox.setText(mensagem)
+            
+        # Adicionando um ícone personalizado do GeoPEC
+        # Adding a custom GeoPEC icon
+        icon = QIcon(self.plugin_dir + "/icon/geopec.png")  
+        msgBox.setWindowIcon(icon)
+            
+        # Adicionando icone de informação. Compatibilidade de ícone (QGIS3 e QGIS4)
+        # Adding the information icon. QGIS3 and QGIS4 compatibility
+        icon_info = getattr(QMessageBox, 'Information', None) or QMessageBox.Icon.Information
+        msgBox.setIcon(icon_info)
+            
+        # Adicionando as opções de sim e de não ao messagebox
+        # Adding yes and no options to the messagebox
+        simButton = QRadioButton("Sim, exclua os pontos do processamento")
+        naoButton = QRadioButton("Não, mantenha os pontos no processamento ")
+        # Compatibilidade QGIS3 e QGIS4
+        yes_role = getattr(QMessageBox, 'ButtonRole', QMessageBox).YesRole
+        no_role = getattr(QMessageBox, 'ButtonRole', QMessageBox).NoRole
+        # add button    
+        msgBox.addButton(simButton, yes_role)
+        msgBox.addButton(naoButton, no_role)
 
+        # Executando a janela de dialogo e obtendo a escolha do usuário
+        # Dialog executing and getting user choice
+        msgBox.exec()
 
-    
+        # Retorna Verdadeiro se o botão de excluir os pontos for clicado
+        # return True if simButton is clicked
+        return msgBox.clickedButton() == simButton
+  
     #-------------------  traduzir     
     def atulizaEtCQDG(self,op,resultados):
         """Este método atualiza a interface gráfica da aba da ETCQDG, e tem como parâmetros a opção se 2D, Z ou 3D, e os resultados"""

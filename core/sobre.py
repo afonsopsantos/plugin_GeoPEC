@@ -19,9 +19,9 @@
  email: afonso.santos@ufv.br
  ***************************************************************************/
 """
-from PyQt6.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt6.QtGui import QIcon, QAction
-from PyQt6.QtWidgets import QFileDialog
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from qgis.PyQt.QtGui import QIcon, QAction
+from qgis.PyQt.QtWidgets import QFileDialog
 from qgis.core import *
 from osgeo import gdal
 

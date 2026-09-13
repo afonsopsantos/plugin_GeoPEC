@@ -26,9 +26,9 @@
  ***************************************************************************/
 """
 
-from PyQt6.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QVariant
-from PyQt6.QtGui import QIcon, QAction
-from PyQt6.QtWidgets import QFileDialog, QMessageBox
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QVariant
+from qgis.PyQt.QtGui import QIcon, QAction
+from qgis.PyQt.QtWidgets import QFileDialog, QMessageBox
 from qgis.core import *
 from osgeo import gdal
 
