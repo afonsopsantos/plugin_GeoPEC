@@ -3,7 +3,7 @@ name=GeoPEC
 qgisMinimumVersion = 3.22
 qgisMaximumVersion=4.99
 description=GeoPEC é um software cientifico para avaliação da acurácia posicional de dados espaciais
-version=1.0.2
+version=1.1
 author= Afonso de Paula dos Santos (UFV), João Vitor Alves Gonçalves, Luis Philippe Ventura Rodrigues
 email=afonso.santos@ufv.br, joao.goncalves53@ufv.br, luis.ventura@ufv.br
 
@@ -18,10 +18,10 @@ hasProcessingProvider=no
 changelog=
     1.0 - versão inicial
     1.0.1 - correção de bugs no resultado da acurácia posicional Decreto 89817, metodologia Santos et al. (2016)
-    1.0.2 - compatibilização com QGIS4 e qt6, correção bug no tamanho amostral ISO 2859-2
+    1.1 - compatibilização com QGIS4 e qt6, correção bug no tamanho amostral ISO 2859-2
 
 
-tags=acurácia posicional,controle de qualidade cartográfica,qualidade de dados espaciais,padrão de distribuição espacial,padrão de exatidão cartográfica,Decreto 89817,INCRA,ANM,ASPRS,qualidade, drone,tamanho amostral,ISO 2859,discrepância,erro,positional accuracy,spatial data quality,discrepancie,error,assessment accuracy,quality,control,cartography,sample,sampling design, brasil, brazil, UFV, Viçosa, EAM
+tags=acurácia posicional,controle de qualidade cartográfica,qualidade de dados espaciais,padrão de distribuição espacial,padrão de exatidão cartográfica,Decreto 89817,INCRA,ANM,ASPRS,qualidade, drone,tamanho amostral,ISO 2859,discrepância,erro,positional accuracy,spatial data quality,discrepancie,error,assessment accuracy,quality,control,cartography,sample,sampling design,brasil,brazil,UFV,Viçosa,EAM
 
 homepage=http://www.geopec.com.br
 category=Plugins
