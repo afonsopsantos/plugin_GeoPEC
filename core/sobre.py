@@ -36,7 +36,10 @@ import os.path
 import math
 import os
 import platform
-import subprocess
+
+# open pdf
+from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtGui import QDesktopServices
 
 class sobre:
     """Classe relativa à janela "Sobre" o plugin"""
@@ -172,17 +175,18 @@ class sobre:
         """Método para abrir os termos de uso"""
         """Method for opening the terms of use"""
 
-        file_path = self.plugin_dir + "/docs/Termos_de_uso_plugin_geopec.pdf"
-        
-        try:
-            if platform.system() == 'Windows':
-                os.startfile(file_path)
-            elif platform.system() == 'Darwin':  # macOS
-                subprocess.call(('open', file_path))
-            else:  # Linux
-                subprocess.call(('xdg-open', file_path))
-            
-        except:
+        # diretorio
+        #file_path = self.plugin_dir + "/docs/Termos_de_uso_plugin_geopec.pdf"
+        file_path = os.path.join(self.plugin_dir, "docs", "Termos_de_uso_plugin_geopec.pdf")
+
+        # Converte o caminho local para uma URL válida do Qt
+        url = QUrl.fromLocalFile(file_path)
+    
+        # Abre o arquivo com o leitor de PDF padrão do sistema
+        # O método retorna True em caso de sucesso e False se falhar
+        success = QDesktopServices.openUrl(url)
+
+        if not success:
             self.show_messagebox_erro("erro", "Não foi possível abrir os termos de uso do programa!")
     
     def show_messagebox_erro(self, tipo, mensagem):
