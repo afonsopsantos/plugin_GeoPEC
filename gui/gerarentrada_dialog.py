@@ -22,8 +22,8 @@
 
 import os
 
-from PyQt6 import uic
-from PyQt6 import QtWidgets
+from qgis.PyQt import uic
+from qgis.PyQt import QtWidgets
 
 # carrega o arquivo .ui com a parte grafica elaborada pelo Qt Designer e 'armazena' no FORM_CLASS 
 # Load the .ui file containing the graphical elements created by Qt Designer

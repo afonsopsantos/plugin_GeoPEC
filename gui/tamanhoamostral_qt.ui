@@ -74,7 +74,7 @@
        <string>Amostragem Espacial (ET-CQDG)</string>
       </property>
       <property name="textFormat">
-       <enum>Qt::TextFormat::AutoText</enum>
+       <enum>Qt::AutoText</enum>
       </property>
       <property name="wordWrap">
        <bool>false</bool>
@@ -118,7 +118,7 @@
        <number>2</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -187,7 +187,7 @@
        <string/>
       </property>
       <property name="inputMethodHints">
-       <set>Qt::InputMethodHint::ImhPreferNumbers</set>
+       <set>Qt::ImhPreferNumbers</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_4">
@@ -279,7 +279,7 @@
        <string>Digite um número inteiro relativo a quantindade de células válidas dentro da área de estudo.</string>
       </property>
       <property name="inputMethodHints">
-       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+       <set>Qt::ImhDigitsOnly</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_8">
@@ -361,7 +361,7 @@
        <number>5</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -513,7 +513,7 @@
        <string>Digite um número inteiro relativo a quantindade de células válidas dentro da área de estudo.</string>
       </property>
       <property name="inputMethodHints">
-       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+       <set>Qt::ImhDigitsOnly</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_15">
@@ -551,7 +551,7 @@
        <number>1</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -1078,7 +1078,7 @@
        <number>2</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -1248,7 +1248,7 @@
        <number>2</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -1598,7 +1598,7 @@
        <string>CartTop V1.1 2020</string>
       </property>
       <property name="textFormat">
-       <enum>Qt::TextFormat::AutoText</enum>
+       <enum>Qt::AutoText</enum>
       </property>
       <property name="wordWrap">
        <bool>false</bool>
@@ -1724,7 +1724,7 @@
        <string/>
       </property>
       <property name="inputMethodHints">
-       <set>Qt::InputMethodHint::ImhPreferNumbers</set>
+       <set>Qt::ImhPreferNumbers</set>
       </property>
      </widget>
     </widget>
@@ -1760,7 +1760,7 @@
      <string/>
     </property>
     <property name="textFormat">
-     <enum>Qt::TextFormat::RichText</enum>
+     <enum>Qt::RichText</enum>
     </property>
     <property name="pixmap">
      <pixmap>../icon/amostragem-tamanho.svg</pixmap>

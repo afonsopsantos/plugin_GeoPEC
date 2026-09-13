@@ -109,7 +109,7 @@
     <string>versão 1.0.2 - 2026</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -207,7 +207,7 @@
     <string/>
    </property>
    <property name="textFormat">
-    <enum>Qt::TextFormat::RichText</enum>
+    <enum>Qt::RichText</enum>
    </property>
    <property name="pixmap">
     <pixmap>../icon/sobre-fundo.png</pixmap>

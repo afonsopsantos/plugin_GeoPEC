@@ -188,7 +188,7 @@
        <string>500</string>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -352,7 +352,7 @@
        <number>0</number>
       </property>
       <property name="insertPolicy">
-       <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+       <enum>QComboBox::InsertAtCurrent</enum>
       </property>
       <item>
        <property name="text">
@@ -642,7 +642,7 @@
          <number>2</number>
         </property>
         <property name="insertPolicy">
-         <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+         <enum>QComboBox::InsertAtCurrent</enum>
         </property>
         <item>
          <property name="text">
@@ -705,7 +705,7 @@
          <number>1</number>
         </property>
         <property name="insertPolicy">
-         <enum>QComboBox::InsertPolicy::InsertAtCurrent</enum>
+         <enum>QComboBox::InsertAtCurrent</enum>
         </property>
         <item>
          <property name="text">
@@ -4307,10 +4307,10 @@
          </font>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::FocusPolicy::StrongFocus</enum>
+         <enum>Qt::StrongFocus</enum>
         </property>
         <property name="contextMenuPolicy">
-         <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+         <enum>Qt::DefaultContextMenu</enum>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_14">
@@ -4369,10 +4369,10 @@
          </font>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::FocusPolicy::StrongFocus</enum>
+         <enum>Qt::StrongFocus</enum>
         </property>
         <property name="contextMenuPolicy">
-         <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+         <enum>Qt::DefaultContextMenu</enum>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_15">
@@ -5234,7 +5234,7 @@
        <string/>
       </property>
       <property name="textFormat">
-       <enum>Qt::TextFormat::RichText</enum>
+       <enum>Qt::RichText</enum>
       </property>
       <property name="pixmap">
        <pixmap>../icon/variancia-circular-barra.png</pixmap>
@@ -5460,7 +5460,7 @@
        <string>Metodologia: Manual Técnico de Georreferenciamento - 2ª edição - 2022</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -5701,7 +5701,7 @@ font-weight: bold;
 </string>
       </property>
       <property name="inputMethodHints">
-       <set>Qt::InputMethodHint::ImhNone</set>
+       <set>Qt::ImhNone</set>
       </property>
       <property name="text">
        <string>Resultado</string>
@@ -5710,7 +5710,7 @@ font-weight: bold;
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -5906,7 +5906,7 @@ font-weight: bold;
        <string>Resultado</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -5944,7 +5944,7 @@ font-weight: bold;
        <string>Resultado:</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -6719,7 +6719,7 @@ font-weight: bold;
      <string/>
     </property>
     <property name="textFormat">
-     <enum>Qt::TextFormat::RichText</enum>
+     <enum>Qt::RichText</enum>
     </property>
     <property name="pixmap">
      <pixmap>../icon/posicional-2.svg</pixmap>
@@ -6984,10 +6984,10 @@ font-weight: bold;
        </font>
       </property>
       <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::StrongFocus</enum>
+       <enum>Qt::StrongFocus</enum>
       </property>
       <property name="contextMenuPolicy">
-       <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+       <enum>Qt::DefaultContextMenu</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_7">
@@ -7045,10 +7045,10 @@ font-weight: bold;
        </font>
       </property>
       <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::StrongFocus</enum>
+       <enum>Qt::StrongFocus</enum>
       </property>
       <property name="contextMenuPolicy">
-       <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+       <enum>Qt::DefaultContextMenu</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_8">

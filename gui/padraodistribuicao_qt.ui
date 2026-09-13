@@ -913,7 +913,7 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="text">
        <string>Resultado</string>
@@ -922,7 +922,7 @@
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_39">
@@ -940,13 +940,13 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="text">
        <string>Resultado</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_40">
@@ -964,13 +964,13 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="text">
        <string>Resultado</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_41">
@@ -1241,7 +1241,7 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 0, 0);</string>
@@ -1253,7 +1253,7 @@
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_2">
@@ -1284,7 +1284,7 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 0, 0);</string>
@@ -1296,7 +1296,7 @@
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_59">
@@ -1314,7 +1314,7 @@
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 0, 0);</string>
@@ -1326,7 +1326,7 @@
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <zorder>label_51</zorder>
@@ -1395,7 +1395,7 @@
      <string/>
     </property>
     <property name="textFormat">
-     <enum>Qt::TextFormat::RichText</enum>
+     <enum>Qt::RichText</enum>
     </property>
     <property name="pixmap">
      <pixmap>../../atualizado 05-06-24/GeoPEC/GeoPEC/icon/amostragem-padrao.svg</pixmap>
@@ -1414,7 +1414,7 @@
      <string/>
     </property>
     <property name="textFormat">
-     <enum>Qt::TextFormat::RichText</enum>
+     <enum>Qt::RichText</enum>
     </property>
     <property name="pixmap">
      <pixmap>../icon/amostragem-padrao.svg</pixmap>
