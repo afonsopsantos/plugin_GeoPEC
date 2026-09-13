@@ -287,25 +287,6 @@ class posicional:
                 QMessageBox.warning(self.dlg, "Erro", "A camada selecionada não possui geometria de ponto.")
                 pass
 
-    '''def carregaCamada(self):
-        """execução do botão para abrir uma layer. Será aberto uma janela de diálogo e a layer escolhida será adicionada ao projeto e ao combobox"""
-        camada_abrir = str(QFileDialog.getOpenFileName(caption = "Escolha a camada",filter = "Shapefiles (*.shp)")[0])
-    
-        if camada_abrir:
-    
-            # Carregar a camada
-            layer = QgsVectorLayer(camada_abrir, str.split(os.path.basename(camada_abrir), ".") [0], "ogr")
-        
-            # Verificando se a camada possui geometria de ponto
-            if layer.geometryType() == QgsWkbTypes.PointGeometry:
-                # Adicionar a camada ao projeto
-                QgsProject.instance().addMapLayer(layer)
-                self.carregaVetor()
-            else:
-            # Informar ao usuário que a camada não possui geometria de ponto
-                QMessageBox.warning(self.dlg, "Erro", "A camada selecionada não possui geometria de ponto.")
-                pass'''
-    
     def show_messagebox_erro(self, tipo, mensagem):
         """Método para exibir um messagebox informando erro ou sucesso em alguma ação do programa"""    
         """Method to display a message box informing of an error or success in some program action"""
@@ -572,45 +553,36 @@ class posicional:
         """Este método processa as atualizações da aba de tendência, como cálculos e atualizações da interface gráfica """
         """ Tem como parâmetros, os dicionários de discrepâncias dx, dy e dx"""
         
-        #Obtendo a opção de processamento
+        # Obtendo a opção de processamento
         op = self.op_norma 
         
-        #Obtendo o nível de confiança do teste T de stdent e adicionando a uma variável geral
-            
+        #Obtendo o nível de confiança do teste T de stdent e adicionando a uma variável geral   
         niv_conf = self.dlg.comboBox_13.currentIndex()
         self.niv_conf_t =niv_conf
         
         #Aplicando o teste T de student utilizando uma função da biblioteca externa
-        
         result_x, t_calc_x, t_tabelado_x, teste_x = fTdeStudent(dx,niv_conf)
         result_y, t_calc_y, t_tabelado_y, teste_y = fTdeStudent(dy,niv_conf)
         result_z, t_calc_z, t_tabelado_z, teste_z = fTdeStudent(dz,niv_conf)
         
         #Obtendo o nível de confiança para alterar os labels
-        
         if niv_conf ==0:
-        
             nc_label = '75%'
-    
-        elif niv_conf ==1:
-            
+
+        elif niv_conf ==1:   
             nc_label = '90%'
 
-        elif niv_conf ==2:
-            
+        elif niv_conf ==2:  
             nc_label = '95%'
             
-        elif niv_conf ==3:
-            
+        elif niv_conf ==3:  
             nc_label = '97,5%'
 
-        else:
-            
+        else:  
             nc_label = '99%'
             
         
-        #Atualizando os labels da aba de tendência
-        
+        # Atualizando os labels da aba de tendência - Processamento 2D
         if (op==0) or (op==3) or (op==6) or (op==7): #2D
             
             #Limpando a tabela do teste t
@@ -637,9 +609,8 @@ class posicional:
             self.dlg.tableWidget.verticalHeader().setFont(header_font)
             
             #Definindo o tamanho da coluna de resultado
-         
-            self.dlg.tableWidget.setGeometry(20, 50, 295, 80)
-            self.dlg.tableWidget.setColumnWidth(2, 100) # define o tamanho da coluna
+            self.dlg.tableWidget.setGeometry(20, 50, 350, 80)
+            self.dlg.tableWidget.setColumnWidth(2, 150) # define o tamanho da coluna
             
             #Preenchendo a tabela de resultados
             self.dlg.tableWidget.setItem(0, 0, QTableWidgetItem(f"{t_tabelado_x:.3f}"))
@@ -651,7 +622,6 @@ class posicional:
             self.dlg.tableWidget.setItem(1, 2, QTableWidgetItem(result_y))
                                              
             #Caso não seja para processar a ANM, os labels de variancia circular ficam visiveis
-            
             if  not((op == 7) or (op == 8) or (op == 9)): #Processamento de outras normas, sem ser da ANM
                        
                 #Deixando os labels da variancia circular visiveis
@@ -664,53 +634,40 @@ class posicional:
                 self.dlg.label_111.setText(f"{var_circular:.3f}")
                 
                 #Atualizando a imagem da variancia circular
-                if var_circular <= 0.2:
-                    
+                if var_circular <= 0.2: 
                     imagem =  '1'
                 
                 elif var_circular <= 0.4:
-                    
                     imagem =  '2'
                 
                 elif var_circular <= 0.6:
-                
                     imagem =  '3'
                 
                 elif var_circular <= 0.8:
-                    
                     imagem =  '4'
                 
                 else:
-                
                     imagem =  '5'
                 
                 self.atualiza_imagem(imagem)
                 
                 #Mudando o resultado final para a variância circular
-            
                 if var_circular >= 0.5:
-                
                     self.dlg.label_112.setText('Não Tendencioso')
-            
                 else:
-                
                     self.dlg.label_112.setText('Tendencioso')
                 
                 #Alterando a tabela do relatório
-                
                 self.table_med_relatorio = [ soma_seno, soma_cosseno, media_dir, var_circular, self.dlg.label_112.text()]
             
             #Caso o processamento for da ANM, não exibe os labels de variancia circular
-            
-            else:
-                
+            else:  
                 self.showVarCircular(False)
                 self.table_med_relatorio = [ 0, 0, 0, 0, 0]
             
             #Mudando o resultado final para o teste t de student 
             
             #Deixando os labels visiveis, mudando a posição dos labels e o conteúdo dos labels
-            
             self.dlg.label_60.setVisible(True)
             self.dlg.label_120.setVisible(True)
             
@@ -718,12 +675,11 @@ class posicional:
             self.dlg.label_129.setVisible(False)
             
             #Alterando o nível de confiança do teste
-            
-            self.dlg.label_183.setGeometry(20,144,151,16)
+            self.dlg.label_183.setGeometry(20,140,151,16)
             self.dlg.label_183.setText(f"Nível de confiança: {nc_label}")
             
             #Mudando a posição do label
-            self.dlg.label_120.setGeometry(85, 240, 121, 16)
+            self.dlg.label_120.setGeometry(100, 230, 121, 16)
             
             #Mudando o conteúdo do label
             self.dlg.label_60.setText('Resultado:')
@@ -731,37 +687,27 @@ class posicional:
             #Mudando o resultado final
             
             #Entra no if se o usuário ter escolhido levar em conta a normalidade para o teste t de student
-            
             if self.dlg.radioButton_4.isChecked():
                 
                 #Entra no if se as discrepâncias forem normais estatisticamente
-                if self.normalidade_2d:
-                    
-                    if (result_x == 'Não há tendência') and (result_y == 'Não há tendência') :
-                        
+                if self.normalidade_2d:   
+                    if (result_x == 'Não há tendência') and (result_y == 'Não há tendência') :  
                         self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
-                    
-                    else:
-                        
+                    else:   
                         self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso
                 
                 #Entra no else se as discrepâncias não forem normais estatisticamente                
                 else:
-                    
                     self.dlg.label_120.setText('Inconclusivo')
                     #inconclusivo
                 
             else: # Cai no else se o usuário não ter escolhido levar em conta a normalidade
-                
-                if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
-                        
+                if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):    
                     self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
-                    
-                else:
-                        
+                else: 
                     self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso
                                     
@@ -769,51 +715,39 @@ class posicional:
             #Atualizando as variáveis de tendência do relatório
             
             #Atualizando a variável 2D
-            
             if not((op == 7) or (op == 8) or (op == 9)): #Processamento de outras normas
-            
                 if (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Não Tendencioso'):
-                
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 elif (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Inconclusivo'):
-                    
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 else:
-                
                     self.var_tendencia_2D_relatorio = 'existe tendência'
-                
                 self.var_tendencia_Z_relatorio = 'nao definido'
             
             else: #ANM
-                
                 if (self.dlg.label_120.text() == 'Não Tendencioso'):
-            
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
             
                 elif (self.dlg.label_120.text() == 'Inconclusivo'):
-                
                     self.var_tendencia_2D_relatorio = 'inconclusivo'
             
                 else:
-            
-                    self.var_tendencia_2D_relatorio = 'existe tendência'
-                    
+                    self.var_tendencia_2D_relatorio = 'existe tendência'   
                 self.var_tendencia_Z_relatorio = 'nao definido'
             
             
-            #Atualizando as variáveis da tabela
-            
+            #Atualizando as variáveis da tabela 
             self.table_t_relatorio = [ [t_tabelado_x, t_calc_x, result_x],
                                        [t_tabelado_y, t_calc_y, result_y]
                                      ]
             
             
-                
+        # Processamento Z        
         elif (op==1) or (op==4) or (op==8): #z
             
-            #Limpando a tabela do teste t
+            # Limpando a tabela do teste t
             self.dlg.tableWidget.clear()
             
             # Definindo os cabeçalhos das colunas
@@ -821,7 +755,7 @@ class posicional:
             self.dlg.tableWidget.setColumnCount(3)
             self.dlg.tableWidget.setHorizontalHeaderLabels(headers)
             
-            #Definindo um estilo para os cabeçalhos da tabela (em negrito)
+            # Definindo um estilo para os cabeçalhos da tabela (em negrito)
             header_font = QFont()
             header_font.setBold(True)
             self.dlg.tableWidget.horizontalHeader().setFont(header_font)
@@ -831,27 +765,26 @@ class posicional:
             self.dlg.tableWidget.setRowCount(1)
             self.dlg.tableWidget.setVerticalHeaderLabels(headers)
             
-            #Definindo um estilo para os cabeçalhos da tabela (em negrito)
+            # Definindo um estilo para os cabeçalhos da tabela (em negrito)
             header_font = QFont()
             header_font.setBold(True)
             self.dlg.tableWidget.verticalHeader().setFont(header_font)
             
-            #Definindo o tamanho da coluna de resultado
+            # Definindo o tamanho da coluna de resultado
         
-            self.dlg.tableWidget.setGeometry(20, 50, 295, 50)
-            self.dlg.tableWidget.setColumnWidth(2, 100) # define o tamanho da coluna
+            self.dlg.tableWidget.setGeometry(20, 50, 350, 50)
+            self.dlg.tableWidget.setColumnWidth(2, 150) # define o tamanho da coluna
             
-            #Preenchendo a tabela de resultados
+            # Preenchendo a tabela de resultados
             self.dlg.tableWidget.setItem(0, 0, QTableWidgetItem(f"{t_tabelado_z:.3f}"))
             self.dlg.tableWidget.setItem(0, 1, QTableWidgetItem(f"{t_calc_z:.3f}"))
             self.dlg.tableWidget.setItem(0, 2, QTableWidgetItem(result_z))
             
             self.showVarCircular(False)
             
-            #Mudando o resultado final para o teste t de student
+            # Mudando o resultado final para o teste t de student
             
-            #Deixando os labels visiveis, mudando a posição dos labels e o conteúdo dos labels
-            
+            # Deixando os labels visiveis, mudando a posição dos labels e o conteúdo dos labels
             self.dlg.label_60.setVisible(True)
             self.dlg.label_120.setVisible(True)
             
@@ -859,12 +792,11 @@ class posicional:
             self.dlg.label_129.setVisible(False)
             
             #Alterando o nível de confiança do teste
-            
-            self.dlg.label_183.setGeometry(20,114,151,16)
+            self.dlg.label_183.setGeometry(20,120,151,16)
             self.dlg.label_183.setText(f"Nível de confiança: {nc_label}")
             
-            #Mudando a posição do label
-            self.dlg.label_120.setGeometry(85, 240, 121, 16)
+            # Mudando a posição do label
+            self.dlg.label_120.setGeometry(100, 230, 121, 16)
             
             #Mudando o conteúdo do label
             self.dlg.label_60.setText('Resultado:')
@@ -875,64 +807,50 @@ class posicional:
             if self.dlg.radioButton_4.isChecked():
                 
                 #Entra no if se as discrepâncias em Z forem normais estatisticamente
-                
                 if self.normalidade_z:
                     
                     if (result_z == 'Não há tendência'):
-                        
                         self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
                     
                     else:
-                        
                         self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso
                 
                 #Entra no else se as discrepâncias em Z não forem normais estatisticamente
-               
                 else: 
-                    
                     self.dlg.label_120.setText('Inconclusivo')
                     #inconclusivo
             
             # Cai no else se o usuário não ter escolhido levar em conta a normalidade
             else:
                 
-                if (result_z == 'Não há tendência'):
-                        
+                if (result_z == 'Não há tendência'): 
                     self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
-                    
-                else:
-                        
+                else: 
                     self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso
             
             #Atualizando as variáveis de tendência do relatório
                
             #Atualizando a variável Z
-            
             if (self.dlg.label_120.text() == 'Não Tendencioso'):
-            
                 self.var_tendencia_Z_relatorio = 'Não Tendencioso'
             
             elif (self.dlg.label_120.text() == 'Inconclusivo'):
-                
                 self.var_tendencia_Z_relatorio = 'inconclusivo'
             
             else:
-            
                 self.var_tendencia_Z_relatorio = 'existe tendência'
             
             self.var_tendencia_2D_relatorio = 'nao definido'
             
             #Atualizando as variáveis da tabela
-            
-            self.table_t_relatorio = [t_tabelado_z, t_calc_z, result_z]
-                                     
+            self.table_t_relatorio = [t_tabelado_z, t_calc_z, result_z]                     
             self.table_med_relatorio = [ 'nao definido', 'nao definido', 'nao definido', 'nao definido', 'nao definido']
     
-
+        # Processamento 2D e Z 
         else: #2D e Z
             
             #Limpando a tabela do teste t
@@ -960,8 +878,8 @@ class posicional:
             
             #Definindo o tamanho da coluna de resultado
 
-            self.dlg.tableWidget.setGeometry(20, 50, 295, 106)
-            self.dlg.tableWidget.setColumnWidth(2, 100) # define o tamanho da coluna
+            self.dlg.tableWidget.setGeometry(20, 50, 350, 110)
+            self.dlg.tableWidget.setColumnWidth(2, 150) # define o tamanho da coluna
             
             #Preenchendo a tabela de resultados
             self.dlg.tableWidget.setItem(0, 0, QTableWidgetItem(f"{t_tabelado_x:.3f}"))
@@ -982,7 +900,6 @@ class posicional:
                 self.showVarCircular(True)
                 
                 #Calculando as estatisticas espaciais
-                
                 soma_seno, soma_cosseno, media_dir, var_circular = fMedia_Dir_e_Var_Circ(dx,dy)
                 
                 #Alterando os labels de variancia circular
@@ -993,58 +910,47 @@ class posicional:
                 
                 #Atualizando a imagem da variancia circular
                 if var_circular <= 0.2:
-                    
                     imagem =  '1'
                 
                 elif var_circular <= 0.4:
-                    
                     imagem =  '2'
                 
                 elif var_circular <= 0.6:
-                
                     imagem =  '3'
                 
                 elif var_circular <= 0.8:
-                    
                     imagem =  '4'
                 
                 else:
-                
                     imagem =  '5'
                 
                 self.atualiza_imagem(imagem)
                 
                 #Mudando o resultado final para a variância circular
-                
                 if var_circular >= 0.5:
-                    
                     self.dlg.label_112.setText('Não Tendencioso')
                 
                 else:
-                    
                     self.dlg.label_112.setText('Tendencioso')
                 
                 self.table_med_relatorio = [ soma_seno, soma_cosseno, media_dir, var_circular, self.dlg.label_112.text()]
                 
             else: #Processamento da ANM
-                
                 self.showVarCircular(False)
                 self.table_med_relatorio = [ 0, 0, 0, 0, 0]
                 
             #Mudando o resultado final para os testes t de student, caso 2d
             
             #Deixando os labels visiveis, mudando a posição dos labels e o conteúdo dos labels
-            
             self.dlg.label_60.setVisible(True)
             self.dlg.label_120.setVisible(True)
             
             #Alterando o nível de confiança do teste
-            
             self.dlg.label_183.setGeometry(20,170,151,16)
             self.dlg.label_183.setText(f"Nível de confiança: {nc_label}")
             
             #Mudando a posição do label
-            self.dlg.label_120.setGeometry(160, 240, 121, 16)
+            self.dlg.label_120.setGeometry(160, 230, 121, 16)
             
             #Mudando o conteúdo do label
             self.dlg.label_60.setText('Resultado Planimetria:')
@@ -1056,38 +962,30 @@ class posicional:
                 
                 #Entra no if se as discrepâncias forem normais estatisticamente
                 if self.normalidade_2d:
-                    
                     if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
-                        
                         self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
                     
                     else:
-                        
                         self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso 
                 
                 #Entra no else se as discrepâncias não forem normais estatisticamente
                 else:
-                    
                     self.dlg.label_120.setText('Inconclusivo')
                     #inconclusivo
               
             #Cai no else se o usuário não ter escolhido levar em conta a normalidade  
             else:
-                
                 if (result_x == 'Não há tendência') and (result_y == 'Não há tendência'):
-                        
                     self.dlg.label_120.setText('Não Tendencioso')
                         #Não Tendencioso
                     
-                else:
-                        
+                else:  
                     self.dlg.label_120.setText('Tendencioso')
                         #Tendencioso               
             
             #Mudando o resultado final para o teste t de student da altimetria
-            
             self.dlg.label_118.setVisible(True)
             self.dlg.label_129.setVisible(True)
 
@@ -1101,33 +999,27 @@ class posicional:
                 
                 #Entra no if se as discrepâncias forem normais estatisticamente
                 if self.normalidade_z:
-                    
                     if (result_z == 'Não há tendência'):
-                        
                         self.dlg.label_129.setText('Não Tendencioso')
                         #Não Tendencioso
                     
                     else:
-                        
                         self.dlg.label_129.setText('Tendencioso')
                         #Tendencioso
                 
                 #Entra no else se as discrepâncias não forem normais estatisticamente                
                 else:
-                    
                     self.dlg.label_129.setText('Inconclusivo')
                     #inconclusivo
              
             #Cai no else se o usuário não ter escolhido levar em conta a normalidade   
             else:
                 
-                if (result_z == 'Não há tendência'):
-                        
+                if (result_z == 'Não há tendência'):    
                     self.dlg.label_129.setText('Não Tendencioso')
                         #Não Tendencioso
                     
-                else:
-                        
+                else: 
                     self.dlg.label_129.setText('Tendencioso')
                         #Tendencioso
             
@@ -1135,51 +1027,39 @@ class posicional:
             #Atualizando as variáveis de tendência do relatório
             
             #Atualizando a variável 2D
-            
             if  not((op == 7) or (op == 8) or (op == 9)): #Processamento de outras normas
             
                 if (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Não Tendencioso'):
-                
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 elif (self.dlg.label_112.text() == 'Não Tendencioso') and (self.dlg.label_120.text() == 'Inconclusivo'):
-                    
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
                 
                 else:
-                
                     self.var_tendencia_2D_relatorio = 'existe tendência'
             
             else: #ANM
                 
                 if (self.dlg.label_120.text() == 'Não Tendencioso'):
-            
                     self.var_tendencia_2D_relatorio = 'Não Tendencioso'
             
                 elif (self.dlg.label_120.text() == 'Inconclusivo'):
-                
                     self.var_tendencia_2D_relatorio = 'inconclusivo'
             
                 else:
-            
                     self.var_tendencia_2D_relatorio = 'existe tendência'
                 
             #Atualizando a variável Z
-            
             if (self.dlg.label_129.text() == 'Não Tendencioso'):
-            
                 self.var_tendencia_Z_relatorio = 'Não Tendencioso'
             
             elif (self.dlg.label_129.text() == 'Inconclusivo'):
-                
                 self.var_tendencia_Z_relatorio = 'inconclusivo'
             
             else:
-            
                 self.var_tendencia_Z_relatorio = 'existe tendência'    
             
             #Atualizando as variáveis da tabela
-            
             self.table_t_relatorio = [ [t_tabelado_x, t_calc_x, result_x],
                                        [t_tabelado_y, t_calc_y, result_y],
                                        [t_tabelado_z, t_calc_z, result_z]
@@ -1515,8 +1395,8 @@ class posicional:
             
             # Setando a geometria dos labels         
 			# Setting the geometry of the labels
-            self.dlg.label_122.setGeometry(95, 80, 191, 16)
-            self.dlg.label_123.setGeometry(157, 110, 81, 16)
+            self.dlg.label_122.setGeometry(120, 80, 191, 16)
+            self.dlg.label_123.setGeometry(180, 110, 81, 16)
             
             # Mudando o resultado e os labels
             # Changing the result and labels
@@ -1560,8 +1440,8 @@ class posicional:
             
             # Setando a geometria dos labels         
 			# Setting the geometry of the labels
-            self.dlg.label_122.setGeometry(95, 80, 191, 16)
-            self.dlg.label_123.setGeometry(157, 110, 81, 16)
+            self.dlg.label_122.setGeometry(120, 80, 191, 16)
+            self.dlg.label_123.setGeometry(180, 110, 81, 16)
             
             # Mudando o resultado e os labels
             # Changing the result and labels
@@ -1606,8 +1486,8 @@ class posicional:
             
             # Setando a geometria dos labels         
 			# Setting the geometry of the labels
-            self.dlg.label_122.setGeometry(160, 80, 191, 16)
-            self.dlg.label_123.setGeometry(220, 110, 81, 16)
+            self.dlg.label_122.setGeometry(180, 80, 191, 16)
+            self.dlg.label_123.setGeometry(250, 110, 81, 16)
             
             # mudando o metodo
             # changing method
@@ -1806,10 +1686,10 @@ class posicional:
             # Obtendo a escolha do usuário
             # Getting user choice
             returnValue = msgBox.exec()
-           
+
             # Entra no if caso o usuário escolha "sim", ou seja, processar excluindo os pontos
             # Enter if if the user chooses "yes", that is, process excluding the points
-            if returnValue == 0:
+            if returnValue == 2:
                 return True
             
             # Entra no else se o usuário escolha "Não", ou seja, desista de excluir os pontos
@@ -4328,7 +4208,7 @@ class posicional:
         self.trava_tabs()
 
     def opcaoExcluir(self,data):
-        """Este método cria um conjunto com os pontos que foram marcados para excluir, pergunta a o usuário se quer mesmo excluir os pontos e retorna a opção do usário e o conjunto de pontos"""
+        """Este método cria um conjunto com os pontos que foram marcados para excluir, pergunta a o usuário se quer mesmo excluir os pontos e retorna a opção do usuário e o conjunto de pontos"""
         
         #Definindo um conjunto vazio para os pontos a serem excluidos
         pontos_excluir = set() 
@@ -4355,7 +4235,7 @@ class posicional:
         
         #Obtendo o número de pontos marcados como excluir e exibindo a mensagem ao usuário
         pontos = len(pontos_excluir) 
-        opcao = self.showMessageBox( pontos)    
+        opcao = self.showMessageBox(pontos)    
         
         #Retornando o número de pontos marcados como excluir e a opção escolhida pelo usuário no messagebox
         resultado =(opcao,pontos_excluir)
@@ -4723,6 +4603,7 @@ class posicional:
                 
                 #Passando os dados para uma variável de dados geral
                 self.data_geral = data
+
                 #Calculando as discrepâncias
                 dx, dy, dz = fDiscrepancia(data)
                 d2D = fDiscrepancia2D(dx, dy)
@@ -4813,9 +4694,9 @@ class posicional:
                         
                         #Obtendo os dados da variável de dados gerais ---> self.data_geral
                         data = self.data_geral
+                        
                         #Perguntando ao usuário se deseja mesmo excluir os pontos marcados, caso tenha escolhido excluir algum ponto
-                        opcao, pontos_excluir = self.opcaoExcluir(data)                       
-                                               
+                        opcao, pontos_excluir = self.opcaoExcluir(data)                                           
                         if opcao: #entra aqui se o usuário escolher processar depois que aparecer o messagebox 
                             
                             pontos_total = len(data) - len(pontos_excluir)
@@ -5727,7 +5608,7 @@ class posicional:
                 # Setting the geometry of the labels
                 self.dlg.label_75.setGeometry(530, 20, 181, 16)
                 self.dlg.label_76.setGeometry(540, 110, 211, 31)
-                self.dlg.label_119.setGeometry(540, 50, 211, 61)                
+                self.dlg.label_119.setGeometry(540, 40, 211, 61)                
                 self.dlg.label_114.setGeometry(85, 80, 101, 16)
                 self.dlg.label_164.setGeometry(63, 60, 171, 16)
                 
@@ -5799,7 +5680,7 @@ class posicional:
 				# Setting the geometry of the labels
                 self.dlg.label_75.setGeometry(280, 20, 181, 16)
                 self.dlg.label_76.setGeometry(290, 110, 211, 31)
-                self.dlg.label_119.setGeometry(290, 50, 211, 61)
+                self.dlg.label_119.setGeometry(290, 40, 211, 61)
                 self.dlg.label_114.setGeometry(85, 80, 101, 16)
                 self.dlg.label_164.setGeometry(63, 60, 171, 16)
                 
@@ -5858,9 +5739,9 @@ class posicional:
 				# Setting the geometry of the labels          
                 self.dlg.label_75.setGeometry(530, 20, 181, 16)
                 self.dlg.label_76.setGeometry(540, 110, 211, 31)
-                self.dlg.label_119.setGeometry(540, 50, 211, 61)                
+                self.dlg.label_119.setGeometry(540, 40, 211, 61)                
                 self.dlg.label_114.setGeometry(85, 80, 101, 16)
-                self.dlg.label_164.setGeometry(90, 60, 171, 16)
+                self.dlg.label_164.setGeometry(100, 60, 171, 16)
                 
                 # Mudando o resultado dos labels  
 				# Changing the result of the labels              
@@ -5931,7 +5812,7 @@ class posicional:
 				# Setting the geometry of the labels
                 self.dlg.label_75.setGeometry(280, 20, 181, 16)
                 self.dlg.label_76.setGeometry(290, 110, 211, 31)
-                self.dlg.label_119.setGeometry(290, 50, 211, 61)
+                self.dlg.label_119.setGeometry(290, 40, 211, 61)
                 self.dlg.label_114.setGeometry(85, 80, 101, 16)              
                 
                 # Mudando o resultado dos labels  
@@ -5940,7 +5821,7 @@ class posicional:
                 self.dlg.label_69.setText('Resultado:')
                 self.dlg.label_113.setText('Decreto/ET-CQDG')
                 self.dlg.label_114.setText(f"{capitalize_first_letter(self.classe_Z_relatorio)}")
-                self.dlg.label_164.setGeometry(90, 60, 171, 16)
+                self.dlg.label_164.setGeometry(100, 60, 171, 16)
                 
                 # Resultado em vermelho
 				# results in red
@@ -6012,13 +5893,13 @@ class posicional:
 				# Setting the geometry of the labels        
                 self.dlg.label_75.setGeometry(530, 20, 181, 16)
                 self.dlg.label_76.setGeometry(540, 110, 211, 31)
-                self.dlg.label_119.setGeometry(540, 50, 211, 61)                
+                self.dlg.label_119.setGeometry(540, 40, 211, 61)                
                 self.dlg.label_114.setGeometry(85, 80, 101, 16)
                 self.dlg.label_164.setGeometry(63, 60, 171, 16)
                 
                 self.dlg.label_144.setGeometry(530, 150, 181, 16)
                 self.dlg.label_145.setGeometry(540, 240, 211, 31)
-                self.dlg.label_143.setGeometry(540, 180, 211, 61)
+                self.dlg.label_143.setGeometry(540, 170, 211, 61)
                 self.dlg.label_138.setGeometry(85, 210, 101, 16)
                 
                 # Mudando o resultado dos labels - 2D
@@ -6141,13 +6022,13 @@ class posicional:
 				# Setting the geometry of the labels              
                 self.dlg.label_75.setGeometry(280, 20, 181, 16)
                 self.dlg.label_76.setGeometry(290, 110, 211, 31)
-                self.dlg.label_119.setGeometry(290, 50, 211, 61)
+                self.dlg.label_119.setGeometry(290, 40, 211, 61)
                 self.dlg.label_114.setGeometry(85, 80, 101, 16) 
                 self.dlg.label_164.setGeometry(63, 60, 171, 16)
                 
                 self.dlg.label_144.setGeometry(280, 150, 181, 16)
                 self.dlg.label_145.setGeometry(290, 240, 211, 31)
-                self.dlg.label_143.setGeometry(290, 180, 211, 61)
+                self.dlg.label_143.setGeometry(290, 170, 211, 61)
                 self.dlg.label_138.setGeometry(85, 210, 101, 16)
                 
                 
@@ -6240,8 +6121,8 @@ class posicional:
             # Setting the geometry of the labels 
             self.dlg.label_75.setGeometry(530, 20, 181, 16)
             self.dlg.label_76.setGeometry(540, 110, 211, 31)
-            self.dlg.label_119.setGeometry(540, 50, 211, 61)                
-            self.dlg.label_114.setGeometry(120, 80, 101, 16)
+            self.dlg.label_119.setGeometry(540, 40, 211, 61)                
+            self.dlg.label_114.setGeometry(130, 80, 101, 16)
             self.dlg.label_164.setGeometry(63, 60, 171, 16)
             
             # Mudando o resultado dos labels    
@@ -6318,8 +6199,8 @@ class posicional:
             # Setting the geometry of the labels         
             self.dlg.label_75.setGeometry(530, 20, 181, 16)
             self.dlg.label_76.setGeometry(540, 110, 211, 31)
-            self.dlg.label_119.setGeometry(540, 50, 211, 61)                
-            self.dlg.label_114.setGeometry(120, 80, 101, 16)
+            self.dlg.label_119.setGeometry(540, 40, 211, 61)                
+            self.dlg.label_114.setGeometry(130, 80, 101, 16)
             self.dlg.label_164.setGeometry(90, 60, 171, 16)
             
             # Mudando o resultado dos labels    
@@ -6416,14 +6297,14 @@ class posicional:
             # Setting the geometry of the labels  
             self.dlg.label_75.setGeometry(530, 20, 181, 16)
             self.dlg.label_76.setGeometry(540, 110, 211, 31)
-            self.dlg.label_119.setGeometry(540, 50, 211, 61)                
-            self.dlg.label_114.setGeometry(120, 80, 101, 16)
+            self.dlg.label_119.setGeometry(540, 40, 211, 61)                
+            self.dlg.label_114.setGeometry(130, 80, 101, 16)
             self.dlg.label_164.setGeometry(63, 60, 171, 16)
             
             self.dlg.label_144.setGeometry(530, 150, 181, 16)
             self.dlg.label_145.setGeometry(540, 240, 211, 31)
-            self.dlg.label_143.setGeometry(540, 180, 211, 61)
-            self.dlg.label_138.setGeometry(120, 210, 101, 16)
+            self.dlg.label_143.setGeometry(540, 170, 211, 61)
+            self.dlg.label_138.setGeometry(130, 210, 101, 16)
             
             # Mudando o resultado dos labels - 2D   
             # Changing the result of the labels - 2D         
@@ -6541,7 +6422,7 @@ class posicional:
             # Setting the geometry of the labels
             self.dlg.label_75.setGeometry(280, 20, 181, 16)
             self.dlg.label_76.setGeometry(290, 110, 211, 31)
-            self.dlg.label_119.setGeometry(290, 50, 211, 61)
+            self.dlg.label_119.setGeometry(290, 40, 211, 61)
             self.dlg.label_114.setGeometry(87, 80, 101, 16)
             self.dlg.label_164.setGeometry(90, 60, 171, 16)
             
@@ -6580,7 +6461,7 @@ class posicional:
             # Setting the geometry of the labels           
             self.dlg.label_75.setGeometry(280, 20, 181, 16)
             self.dlg.label_76.setGeometry(290, 110, 211, 31)
-            self.dlg.label_119.setGeometry(290, 50, 211, 61)
+            self.dlg.label_119.setGeometry(290, 40, 211, 61)
             self.dlg.label_114.setGeometry(87, 80, 101, 16)
             self.dlg.label_164.setGeometry(90, 60, 171, 16)
             
@@ -6628,15 +6509,15 @@ class posicional:
             # Setting the geometry of the labels      
             self.dlg.label_75.setGeometry(280, 20, 210, 16)
             self.dlg.label_76.setGeometry(290, 110, 211, 31)
-            self.dlg.label_119.setGeometry(290, 50, 211, 61)
+            self.dlg.label_119.setGeometry(290, 40, 211, 61)
             self.dlg.label_114.setGeometry(87, 80, 101, 16)
             self.dlg.label_164.setGeometry(90, 60, 171, 16)
             
             self.dlg.label_144.setGeometry(280, 150, 200, 16)
             self.dlg.label_145.setGeometry(290, 240, 211, 31)
-            self.dlg.label_143.setGeometry(290, 180, 211, 61)
+            self.dlg.label_143.setGeometry(290, 170, 211, 61)
             self.dlg.label_138.setGeometry(87, 210, 101, 16)
-            self.dlg.label_166.setGeometry(90, 190, 171, 16)
+            self.dlg.label_166.setGeometry(100, 190, 171, 16)
             
             # Mudando o resultado dos labels - 2D 
             # Changing the result of the labels - 2D     
@@ -6712,8 +6593,8 @@ class posicional:
         # Setting the geometry of the labels
         self.dlg.label_75.setGeometry(530, 20, 181, 16)
         self.dlg.label_76.setGeometry(540, 110, 211, 31)
-        self.dlg.label_119.setGeometry(540, 50, 211, 61)                
-        self.dlg.label_114.setGeometry(120, 80, 101, 16)
+        self.dlg.label_119.setGeometry(540, 40, 211, 61)                
+        self.dlg.label_114.setGeometry(130, 80, 101, 16)
         self.dlg.label_164.setGeometry(63, 60, 171, 16)        
         
         # Mudando o resultado dos labels
