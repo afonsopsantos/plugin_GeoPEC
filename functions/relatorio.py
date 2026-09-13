@@ -72,7 +72,10 @@ from .normas_pec import *
 
 import os
 import platform
-import subprocess
+
+#abrir arquivo pdf
+from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtGui import QDesktopServices
 
 #Declarando variáveis globais
 
@@ -131,13 +134,9 @@ def fProcessamento_relatorio(dict_var):
 # Função para abrir o pdf gerado no relatório
 #        
 def open_pdf(file_path):
-
-    if platform.system() == 'Windows':
-        os.startfile(file_path)
-    elif platform.system() == 'Darwin':  # macOS
-        subprocess.call(('open', file_path))
-    else:  # Linux
-        subprocess.call(('xdg-open', file_path))
+    """Abre um arquivo PDF no leitor padrão do sistema operacional."""
+    url = QUrl.fromLocalFile(file_path)
+    return QDesktopServices.openUrl(url)
         
 #--------------------------------------------------------------------------------------------------------
 # Função para gerar as tabelas de outliers para o relatório

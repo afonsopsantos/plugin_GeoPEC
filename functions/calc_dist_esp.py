@@ -19,8 +19,11 @@ from reportlab.pdfgen import canvas'''
 
 ###import os
 import platform
-import subprocess
 from datetime import datetime
+
+# abrir arquivos
+from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtGui import QDesktopServices
 
 #o que ta rodando atualmente
 
@@ -270,13 +273,9 @@ def fCalculaEstatistica(dlg, area):
 # 
 
 def open_pdf(file_path):
-
-    if platform.system() == 'Windows':
-        os.startfile(file_path)
-    elif platform.system() == 'Darwin':  # macOS
-        subprocess.call(('open', file_path))
-    else:  # Linux
-        subprocess.call(('xdg-open', file_path))
+    """Abre um arquivo PDF no leitor padrão do sistema operacional."""
+    url = QUrl.fromLocalFile(file_path)
+    return QDesktopServices.openUrl(url)
         
 
 
